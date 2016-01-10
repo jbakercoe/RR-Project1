@@ -1,0 +1,27 @@
+---
+title: "RRP1"
+author: "James Baker-Coe"
+date: "January 6, 2016"
+output: html_document
+---
+
+This is an R Markdown document for the class Reproducible Research. 
+
+```{r}
+## read data
+act <- read.csv("activity.csv")
+## find means
+means <- aggregate(steps~date, act, mean)
+means$steps <- as.numeric(means$steps)
+
+## find medians
+meds <- aggregate(steps~date, act, median)
+meds$steps <- as.numeric(meds$steps)
+```
+
+
+```{r, echo=FALSE}
+##plot histogram of means
+hist(means$steps)
+```
+
